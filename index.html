@@ -55,7 +55,7 @@
                             <!-- elemento reso dinamico -->
                             <li class="d-flex justify-content-between p-3 list-group-item border-bottom" v-for="(contact, index) in contacts" :key="index">
                                 <div class="d-flex align-items-start">
-                                    <img src="https://www.revert-project.eu/wp-content/uploads/2020/07/avatar.jpg" alt="profilo" class="rounded-circle img-profile me-3">
+                                    <img :src="'./assets/IMG/avatar' + contact.avatar + '.jpg'" alt="profilo" class="rounded-circle img-profile me-3">
                                     <div class="d-flex flex-column">
                                         <span class="fs-5">{{contact.name}}</span>
                                         <span class="text-secondary">Ultimo messaggio inviato</span>
