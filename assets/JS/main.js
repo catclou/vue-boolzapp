@@ -186,10 +186,21 @@ var app = new Vue (
                     message: this.myMessage,
                     status: 'sent'
                 }
+                let answer = {
+                    date: new Date().toLocaleString(),
+                    message: 'ok',
+                    status: 'received'
+                }
                 if(!this.myMessage == '') {
-                    this.contacts[this.indexChanged].messages.push(newMessage);
+                    let percorso = this.contacts[this.indexChanged].messages
+                    percorso.push(newMessage);
                     // Svuotare l'input dopo aver pushato il nuovo messaggio
                     this.myMessage = ''
+                    // Rispondere 'ok' dopo 1 secondo
+                    setTimeout( myFunction, 1000 );
+                    function myFunction() {
+                        percorso.push(answer);
+                    }
                 }
             }
         }
