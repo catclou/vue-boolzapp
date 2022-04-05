@@ -182,7 +182,7 @@ var app = new Vue (
             },
             sendNewMessage: function() {
                 let newMessage = {
-                    date: '05/04/2022 19:00:00',
+                    date: new Date().toLocaleString(),
                     message: this.myMessage,
                     status: 'sent'
                 }
@@ -191,7 +191,6 @@ var app = new Vue (
                     // Svuotare l'input dopo aver pushato il nuovo messaggio
                     this.myMessage = ''
                 }
-                console.log(messages);
             }
         }
     }
