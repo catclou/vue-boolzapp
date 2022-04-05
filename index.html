@@ -99,11 +99,13 @@
 
                             </ul>
                         </div>
+
+                        <!-- area dell'input del messaggio  -->
                         <div class="input-group input-group-sm p-2 d-flex align-items-center bg_footer">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-sm"><i class="fa-regular fa-smile icone_scure fa-xl px-2 py-1"></i></span>
                             </div>
-                            <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                            <input type="text" v-model="myMessage" @keyup.enter="sendNewMessage(indexChanged)" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
                             <div class="d-flex justify-content-center">
                                 <i class="fa-solid fa-microphone p-3 icone_scure fa-xl"></i>
                             </div>

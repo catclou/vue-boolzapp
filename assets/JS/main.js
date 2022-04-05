@@ -11,7 +11,7 @@ var app = new Vue (
             // contacts[indexOggetto].messages.message // qui è dove pusheremo i nuovi messaggi
             // gestire l'indice dinamico: al click bisogna ottenere un dato
             indexChanged: 0,
-            newMessageText: '',
+            myMessage: '',
             contacts: [
                 {
                     name: 'Michele',
@@ -179,6 +179,19 @@ var app = new Vue (
         methods: {
             changeContactsIndex: function(index){
                 this.indexChanged = index;
+            },
+            sendNewMessage: function() {
+                let newMessage = {
+                    date: '05/04/2022 19:00:00',
+                    message: this.myMessage,
+                    status: 'sent'
+                }
+                if(!this.myMessage == '') {
+                    this.contacts[this.indexChanged].messages.push(newMessage);
+                    // Svuotare l'input dopo aver pushato il nuovo messaggio
+                    this.myMessage = ''
+                }
+                console.log(messages);
             }
         }
     }
