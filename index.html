@@ -53,7 +53,7 @@
                         <ul class="list-group list-group-flush h-75 overflow-y">
 
                             <!-- elemento reso dinamico -->
-                            <li class="d-flex justify-content-between p-3 list-group-item border-bottom" v-for="(contact, index) in contacts" :key="index">
+                            <li class="d-flex justify-content-between p-3 list-group-item border-bottom" v-for="(contact, index) in contacts" role="button" @click="changeContactsIndex(index)">
                                 <div class="d-flex align-items-start">
                                     <img :src="'./assets/IMG/avatar' + contact.avatar + '.jpg'" alt="profilo" class="rounded-circle img-profile me-3">
                                     <div class="d-flex flex-column">
@@ -74,9 +74,9 @@
                     <div class="col-8 h-100 d-flex flex-column justify-content-between align-content-between">
                         <div class="d-flex justify-content-between p-3 bg_biancosporco">
                             <div class="d-flex align-items-center">
-                                <img src="https://www.revert-project.eu/wp-content/uploads/2020/07/avatar.jpg" alt="profilo" class="rounded-circle img-profile me-3">
+                                <img :src="`./assets/IMG/avatar${contacts[indexChanged].avatar}.jpg`" alt="profilo" class="rounded-circle img-profile me-3">
                                 <div class="d-flex flex-column">
-                                    <span class="fs-5">Nome e Cognome</span>
+                                    <span class="fs-5">{{contacts[indexChanged].name}}</span>
                                     <span class="text-secondary">Ultimo accesso oggi alle 12:00</span>
                                 </div>
                             </div>
@@ -91,15 +91,10 @@
                         <div class="sfondo-chat p-3 flex-fill overflow-y">
                             <ul class="list-group list-group-flush d-flex flex-column">
 
-                                <!-- DEVE DIVENTARE LA STAMPA DELL'ARRAY DI OGGETTI DEI MESSAGGI  -->
-                                <li class="list-group-item rounded-5 sent align-self-end mb-3 d-flex flex-column">
-                                    <span class="fs-5">Hai portato a spasso il cane?</span>
-                                    <span class="align-self-end icone_chiare">12:00</span>
-                                </li>
-
-                                <li class="list-group-item rounded-5 chat_bg align-self-start received mb-3 d-flex flex-column">
-                                    <span class="fs-5">Messaggio 2</span>
-                                    <span class="align-self-end icone_chiare">12:00</span>
+                                <!-- stampa dinamica dei messaggi  -->
+                                <li class="list-group-item rounded-5 mb-3 d-flex flex-column" v-for="(contact, index) in contacts[indexChanged].messages" :class="(contact.status == 'sent') ? 'align-self-end sent' : 'align-self-start received'">
+                                    <span class="fs-5">{{contact.message}}</span>
+                                    <span class="align-self-end icone_chiare">{{contact.date}}</span>
                                 </li>
 
                             </ul>

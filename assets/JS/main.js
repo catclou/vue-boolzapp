@@ -7,6 +7,11 @@ var app = new Vue (
                 nome: 'Sofia',
                 img: 'avatar_io.jpg' // nel tag img utilizzo il template literal e il v-bind per rendere dinamica l'immagine (in concatenazione)
             },
+
+            // contacts[indexOggetto].messages.message // qui è dove pusheremo i nuovi messaggi
+            // gestire l'indice dinamico: al click bisogna ottenere un dato
+            indexChanged: 0,
+            newMessageText: '',
             contacts: [
                 {
                     name: 'Michele',
@@ -170,6 +175,12 @@ var app = new Vue (
                     ],
                 }
             ]
+        },
+        methods: {
+            changeContactsIndex: function(index){
+                this.indexChanged = index;
+            }
         }
     }
 )
+
