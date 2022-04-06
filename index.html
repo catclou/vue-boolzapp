@@ -45,7 +45,9 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-sm"><i class="fa-solid fa-magnifying-glass icone_chiare"></i></span>
                             </div>
-                            <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                            
+                            <!-- barra di ricerca delle chat  -->
+                            <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" @keyup="searchContact" v-model="searchInput">
                         </div>
 
                         <!-- parte dinamica delle chat  -->
@@ -53,17 +55,17 @@
                         <ul class="list-group list-group-flush h-75 overflow-y">
 
                             <!-- elemento reso dinamico -->
-                            <li class="d-flex justify-content-between p-3 list-group-item border-bottom" v-for="(contact, index) in contacts" role="button" @click="changeContactsIndex(index)">
+                            <li class="d-flex justify-content-between p-3 list-group-item border-bottom" v-for="(contact, index) in contacts" role="button" @click="changeContactsIndex(index)" v-if="contact.visible">
                                 <div class="d-flex align-items-start">
                                     <img :src="'./assets/IMG/avatar' + contact.avatar + '.jpg'" alt="profilo" class="rounded-circle img-profile me-3">
                                     <div class="d-flex flex-column">
                                         <span class="fs-5">{{contact.name}}</span>
+                                        <!-- Per visualizzare l'ultimo messaggio bisogna usare il .lenght (abbinato all'array: messages[]) - 1 -->
                                         <span class="text-secondary">Ultimo messaggio inviato</span>
                                     </div>
                                 </div>
                                 <div class="d-flex align-items-start">
                                     <span class="fs-6 icone_chiare">12:00</span>
-                                    
                                 </div>
                             </li>
                         </ul>

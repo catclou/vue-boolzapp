@@ -12,6 +12,7 @@ var app = new Vue (
             // gestire l'indice dinamico: al click bisogna ottenere un dato
             indexChanged: 0,
             myMessage: '',
+            filterText: '',
             contacts: [
                 {
                     name: 'Michele',
@@ -202,7 +203,18 @@ var app = new Vue (
                         percorso.push(answer);
                     }
                 }
-            }
+            },
+            searchContact: function(){
+                this.contacts.forEach(element => {
+                    element.visible = true
+                    let searchedContact = this.searchInput.toLowerCase()
+                    let contactInList = element.name.toLowerCase()
+                    // se il nome non include le lettere cercate, non è più visibile
+                    if(!(contactInList.includes(searchedContact))){
+                        element.visible = false
+                    }
+                });
+            },
         }
     }
 )
