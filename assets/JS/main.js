@@ -207,7 +207,7 @@ var app = new Vue (
             searchContact: function(){
                 this.contacts.forEach(element => {
                     element.visible = true
-                    let searchedContact = this.searchInput.toLowerCase()
+                    let searchedContact = this.searchInput.toLowerCase() // passo entrambi in minuscolo
                     let contactInList = element.name.toLowerCase()
                     // se il nome non include le lettere cercate, non è più visibile
                     if(!(contactInList.includes(searchedContact))){
